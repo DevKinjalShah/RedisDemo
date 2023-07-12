@@ -1,0 +1,54 @@
+﻿@page
+@using System.Linq.Expressions
+@model RedisDemo.Pages.CountryPopulationModel
+@{
+    ViewData["Title"] = "Country Population";
+}
+
+<div class="text-center">
+    <h1 class="display-4"> Welcome to Country Population</h1>
+    <div class="container">
+
+        @if (Model.Countries is null && Model.LoadLocation == "")
+    {
+        <p><em>Click the button to load the forecast</em></p>
+    }
+        else if (Model.Countries is null)
+    {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            <div class="h3 @Model.IsCachedData">@Model.LoadLocation</div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>Date</th>
+                    <th>Population Count</th>
+                </tr>
+                </thead>
+                <tbody>
+                @{
+
+                    @foreach (var item in Model.Countries)
+                    {
+                        <tr>
+                            <td>@item.Country</td>
+                            <td>@item.Date</td>
+                            <td>@item.PopulationCount</td>
+
+                        </tr>
+                    }
+
+
+
+                }
+
+                </tbody>
+            </table>
+        }
+
+    </div>
+</div>
+
