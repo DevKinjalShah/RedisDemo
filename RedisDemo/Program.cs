@@ -1,4 +1,5 @@
-using RedisDemo.Pages;
+using RedisDemo.Repository;
+using RedisDemo.Repository.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
